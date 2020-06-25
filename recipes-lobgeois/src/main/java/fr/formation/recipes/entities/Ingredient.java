@@ -12,6 +12,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 @Table(name = "ingredients", indexes = {
         @Index(name = "fk_steps_recipes_idx", columnList = "id_recipe") }, uniqueConstraints = @UniqueConstraint(name = "uk_recipe_ingredient", columnNames = {
@@ -30,6 +35,6 @@ public class Ingredient {
     @Column(name = "ingredient_wording", nullable = false)
     private String ingredientWording;
 
-    protected Ingredient() {
+    public Ingredient() {
     }
 }

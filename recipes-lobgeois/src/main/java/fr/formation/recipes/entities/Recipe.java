@@ -31,7 +31,7 @@ public class Recipe {
     @Column(name = "preparing_time_minutes", nullable = false)
     private short preparingTimeMinutes;
 
-    @Column(name = "coking_time_minutes", nullable = true)
+    @Column(name = "cooking_time_minutes", nullable = true)
     private short cookingTimeMinutes;
 
     @Column(name = "servings", nullable = false)
@@ -47,6 +47,6 @@ public class Recipe {
     /**
      * Empty constructor
      */
-    protected Recipe() {
+    public Recipe() {
     }
 }

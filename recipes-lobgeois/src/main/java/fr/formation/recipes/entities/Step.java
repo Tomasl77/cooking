@@ -37,6 +37,6 @@ public class Step {
     @Column(name = "step_order", nullable = false)
     private short stepOrder;
 
-    protected Step() {
+    public Step() {
     }
 }
