@@ -2,13 +2,10 @@ package fr.formation.recipes.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -26,10 +23,6 @@ public class Step {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_step")
     private Integer idStep;
-
-    @JoinColumn(name = "id_recipe", referencedColumnName = "id_recipe", nullable = false, foreignKey = @ForeignKey(name = "fk_steps_recipes"))
-    @ManyToOne
-    private Recipe recipe;
 
     @Column(name = "step_wording", nullable = false, length = 255)
     private String stepWording;

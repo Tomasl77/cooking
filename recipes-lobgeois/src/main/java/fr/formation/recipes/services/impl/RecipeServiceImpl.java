@@ -1,5 +1,7 @@
 package fr.formation.recipes.services.impl;
 
+import javax.validation.Valid;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -20,19 +22,8 @@ public class RecipeServiceImpl implements RecipeService {
     ModelMapper mapper = new ModelMapper();
 
     @Override
-    public void create(PostRecipeDto recipeDto) {
-	Recipe recipe = new Recipe();
-	recipe.setCookingTimeMinutes(recipeDto.getCookingTimeMinutes());
-	recipe.setDifficulty(recipeDto.getDifficulty());
-	recipe.setDishImageUrl(recipeDto.getDishImageUrl());
-	recipe.setPreparingTimeMinutes(recipeDto.getPreparingTimeMinutes());
-	recipe.setRecipeName(recipeDto.getRecipeName());
-	recipe.setServings(recipeDto.getServings());
+    public void create(@Valid PostRecipeDto dto) {
+	Recipe recipe = mapper.map(dto, Recipe.class);
 	repository.save(recipe);
     }
-//    @Override
-//    public void create(@Valid PostRecipeDto dto) {
-//	Recipe recipe = mapper.map(dto, Recipe.class);
-//	repository.save(recipe);
-//    }
 }

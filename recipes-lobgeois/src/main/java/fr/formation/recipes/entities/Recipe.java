@@ -1,12 +1,18 @@
 package fr.formation.recipes.entities;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -43,6 +49,14 @@ public class Recipe {
 
     @Column(name = "dish_image_url", nullable = false, length = 255)
     private String dishImageUrl;
+
+    @OneToMany(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "id_recipe", nullable = false, referencedColumnName = "id_recipe", foreignKey = @ForeignKey(name = "fk_ingredients_recipes"))
+    private Set<Step> steps;
+
+    @OneToMany(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "id_recipe", nullable = false, referencedColumnName = "id_recipe", foreignKey = @ForeignKey(name = "fk_steps_recipes"))
+    private Set<Ingredient> ingredients;
 
     /**
      * Empty constructor
